@@ -7,7 +7,7 @@ WORKDIR /app/frontend
 
 # Install dependencies first (layer-cache friendly)
 COPY frontend/package*.json ./
-RUN npm ci
+RUN npm install --legacy-peer-deps
 
 # Copy source and build
 # NEXT_PUBLIC_API_URL is baked into the JS bundle at build time.
