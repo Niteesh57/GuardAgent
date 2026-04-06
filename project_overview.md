@@ -29,33 +29,33 @@ sequenceDiagram
     participant Auth0 as Auth0 Token Vault
     participant API as Third-Party API (Google Docs/Drive)
 
-    User->>Agent: User Request (e.g., "Research and save to Doc")
+    User->>Agent: "User Request (Research and save to Doc)"
     
-    rect rgb(20, 20, 40)
+    rect rgb(30, 30, 30)
         Note over Agent: IntentNode (Planning)
-        Agent->>Agent: Internal Research (Firecrawl/Jina)
+        Agent->>Agent: Internal Research
     end
 
-    rect rgb(40, 20, 20)
+    rect rgb(50, 30, 30)
         Note over Agent: ContractNode (Safety/Consent)
-        Agent->>Auth0: Fetch Resource Metadata (e.g., File List)
+        Agent->>Auth0: Fetch Resource Metadata
         Auth0-->>Agent: Drive File Metadata
-        Agent-->>User: Return Action Contract + File Selection UI
+        Agent-->>User: "Return Action Contract + File Selection UI"
     end
 
-    Note over User, Agent: ⏸️ Execution Paused: Waiting for User Consent
+    Note over User, Agent: Execution Paused: Waiting for User Consent
 
-    User->>Agent: Approve Contract (Files Selected: A, B)
+    User->>Agent: "Approve Contract (Files Selected: A, B)"
 
-    rect rgb(20, 40, 20)
+    rect rgb(30, 50, 30)
         Note over Agent: ExecutorNode (Secure Action)
         Agent->>Auth0: Request Scoped Access Token
         Auth0-->>Agent: OAuth Token
-        Agent->>API: Execute Action (e.g., Document Created)
+        Agent->>API: "Execute Action (Document Created)"
         API-->>Agent: Result
     end
 
-    Agent-->>User: Task Complete! (Summarized output)
+    Agent-->>User: "Task Complete (Summarized output)"
 ```
 
 ---
