@@ -98,36 +98,47 @@ We utilize the **Auth0 Token Vault** to eliminate local credential storage.
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v20+)
-- Python (v3.11+)
-- Auth0 Account with **Auth0 for AI Agents** enabled.
+- **Node.js**: v20+ 
+- **Python**: v3.11+
+- **Auth0 Account**: With **Auth0 for AI Agents** enabled and a configured **Token Vault**.
 
-### Installation & Deployment
+### Installation & Local Development
 
 1. **Clone the repository**:
    ```bash
-   git clone <your-repo-url>
-   cd Auth0
+   git clone https://github.com/Niteesh57/GuardAgent.git
+   cd GuardAgent
    ```
 
-2. **Setup Backend**:
+2. **Configure Environment Variables**:
+   - **Backend**: Create `backend/.env` from `backend/.env.example`. You'll need `AUTH0_DOMAIN`, `AUTH0_MGMT_CLIENT_ID`, `AUTH0_MGMT_CLIENT_SECRET`, and `GROQ_API_KEY`.
+   - **Frontend**: Create `frontend/.env.local` from `frontend/.env.local.example`.
+
+3. **Setup Backend (FastAPI)**:
    ```bash
    cd backend
    python -m venv venv
+   # Windows:
+   .\venv\Scripts\activate
+   # Mac/Linux:
    source venv/bin/activate
    pip install -r requirements.txt
-   cp .env.example .env
+   python -m uvicorn app.main:app --reload
    ```
 
-3. **Setup Frontend**:
+4. **Setup Frontend (Next.js)**:
    ```bash
    cd ../frontend
    npm install
-   cp .env.local.example .env.local
+   npm run dev
    ```
 
-4. **Docker / Railway Deployment**:
-   Refer to the [Dockerfile](Dockerfile) and [railway.toml](railway.toml) for multi-service container orchestration.
+### 🚢 Docker / Production Deployment
+The project is containerized using a multi-stage `Dockerfile` that orchestrates both the Python backend and Next.js frontend using **Supervisord**.
+
+To deploy (e.g., on Railway or Render):
+- Ensure all environment variables are set in your deployment dashboard.
+- The `Dockerfile` will automatically build the frontend and serve both services.
 
 ---
 
@@ -143,7 +154,7 @@ We are delivering a comprehensive security framework for AI Agents for the **Aut
 - **Auth0 for AI Agents Token Vault Integration**: Secure, off-browser secret management.
 - **Selective Scope Authorization (SSA)**: Granular, file-level consent for agent actions.
 - **Audit Logging**: Immutable history of all agentic tasks.
-- **Technology Stack**: Built with FastAPI (LangGraph), Groq (Llama 3 @ 70B), and Next.js.
-- **Video Demo**: [View on YouTube/Vimeo](#)
-- **Public Repository**: [GitHub Link](#)
-- **Production Link**: [Live Demo App](#)
+- **Technology Stack**: FastAPI (LangGraph), Groq (Llama 3 @ 70B), and Next.js.
+- **🎬 Video Demo**: [Watch on YouTube](https://www.youtube.com/watch?v=hnAFrTIrNHU&t=10s)
+- **📁 Public Repository**: [GitHub (Niteesh57/GuardAgent)](https://github.com/Niteesh57/GuardAgent)
+- **🔗 Production Link**: [Live Demo on Render](https://guardagent.onrender.com/)
