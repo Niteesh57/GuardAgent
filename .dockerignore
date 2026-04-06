@@ -1,0 +1,24 @@
+# Git
+.git
+.gitignore
+
+# Python
+backend/venv
+backend/__pycache__
+backend/**/__pycache__
+backend/**/*.pyc
+backend/.env
+backend/chat_sessions.db
+backend/logs/
+backend/check_connection_error.log
+backend/check_token_output.*
+
+# Node / Next.js
+frontend/node_modules
+frontend/.next
+frontend/.env.local
+
+# Misc
+**/*.md
+.DS_Store
+*.log

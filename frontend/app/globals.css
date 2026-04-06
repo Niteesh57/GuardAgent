@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-geist-sans), sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Scroll reveal animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+}
+
+@keyframes scrollLine {
+  0% { height: 0; opacity: 0; }
+  30% { opacity: 1; }
+  100% { height: 60px; opacity: 0; }
+}
+
+@keyframes bgPan {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-animate-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-animate-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-animate-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-animate-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-animate-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-animate-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+.hero-scroll-indicator {
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+.text-shadow {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.text-shadow-sm {
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Profile pic animation */
+@keyframes profileGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(99, 102, 241, 0.4), 0 0 0 2px rgba(99, 102, 241, 0.2); }
+  50% { box-shadow: 0 0 16px rgba(99, 102, 241, 0.6), 0 0 0 3px rgba(99, 102, 241, 0.3); }
+}
+
+@keyframes profileRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.profile-animated {
+  animation: profileGlow 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.profile-animated:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.7), 0 0 0 4px rgba(99, 102, 241, 0.4);
+}
+
+.profile-ring {
+  position: relative;
+}
+
+.profile-ring::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #6366f1;
+  border-right-color: #a855f7;
+  animation: profileRing 3s linear infinite;
+}
+
+/* User icon avatar */
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes iconBreathe {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 0 6px rgba(99, 102, 241, 0); }
+}
+
+.user-icon-avatar {
+  animation: iconBreathe 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.user-icon-avatar:hover {
+  transform: scale(1.1);
+  animation: none;
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.5);
+}
+
+/* iMessage style bubbles - consistent color scheme */
+.imessage-sent {
+  background: linear-gradient(135deg, rgba(99,102,241,0.8), rgba(139,92,246,0.8));
+  color: white;
+  border-radius: 20px 20px 6px 20px;
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.25);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.imessage-received {
+  background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #1e293b;
+  border-radius: 20px 20px 20px 6px;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+}
+
+.imessage-sent a, .imessage-received a {
+  color: inherit;
+  text-decoration: underline;
+}
