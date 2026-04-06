@@ -165,7 +165,7 @@ export default function LandingPage({ apiUrl }: { apiUrl: string }) {
                   border: `1px solid rgba(99,102,241,${i === 0 ? .8 : .4})`,
                   display: "flex", alignItems: "center", justifyContent: "center",
                   boxShadow: i === 0 ? "0 0 40px rgba(99,102,241,.5)" : "none",
-                  "--dur": `${3 + i * .5}s` as any
+                  ...({ "--dur": `${3 + i * .5}s` } as React.CSSProperties)
                 }}>
                 <Bot size={i === 0 ? 24 : 14} color={i === 0 ? "white" : "rgba(99,102,241,.9)"} />
                 <div style={{ position: "absolute", top: "calc(100% + 6px)", left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap", fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,.4)" }}>{a.label}</div>
@@ -245,7 +245,7 @@ export default function LandingPage({ apiUrl }: { apiUrl: string }) {
           </div>
 
           {/* Action Contract mockup */}
-          <div className="la agent-float" style={{ maxWidth: 480, margin: "0 auto 80px", padding: 28, borderRadius: 24, border: "1px solid rgba(99,102,241,.22)", background: "rgba(8,8,24,.9)", backdropFilter: "blur(24px)", boxShadow: "0 40px 100px rgba(0,0,0,.55),0 0 60px rgba(99,102,241,.07)", "--dur": "5s" as any }}>
+          <div className="la agent-float" style={{ maxWidth: 480, margin: "0 auto 80px", padding: 28, borderRadius: 24, border: "1px solid rgba(99,102,241,.22)", background: "rgba(8,8,24,.9)", backdropFilter: "blur(24px)", boxShadow: "0 40px 100px rgba(0,0,0,.55),0 0 60px rgba(99,102,241,.07)", ...({ "--dur": "5s" } as React.CSSProperties) }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid rgba(255,255,255,.06)" }}>
               <div style={{ width: 38, height: 38, borderRadius: 10, background: "linear-gradient(135deg,#6366f1,#8b5cf6)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <FaClipboardList color="white" size={15} />
