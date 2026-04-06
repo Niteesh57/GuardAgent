@@ -1,11 +1,10 @@
 # 🛡️ Guard Agent: The Secure AI Automation Framework
 ![Auth0 Authorized to Act](frontend/public/auth0.png)
 
-Built for the **Auth0 for AI Agents: Authorized to Act Hackathon**, Guard Agent is a high-security, autonomous research and automation platform. It leverages the **Auth0 for AI Agents Token Vault** to bridge the gap between powerful LLM agents and secure enterprise/personal data.
-
 > [!IMPORTANT]
-> **Pushing the boundaries of what AI agents can do and become.**
-> Guard Agent creates a "Trust Orchestrator" where users can safely delegate complex tasks while maintaining absolute control over their data, powered by the **Auth0 for AI Agents Token Vault**.
+> **Core Requirement**: This project requires an **Auth0 Account** with the **Auth0 for AI Agents Token Vault** enabled. This is the central security mechanism for zero-secret storage and selective scope authorization.
+
+Built for the **Auth0 for AI Agents: Authorized to Act Hackathon**, Guard Agent is a high-security, autonomous research and automation platform. It leverages the **Auth0 for AI Agents Token Vault** to bridge the gap between powerful LLM agents and secure enterprise/personal data.
 
 ---
 
